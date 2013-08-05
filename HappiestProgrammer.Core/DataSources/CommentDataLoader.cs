@@ -8,6 +8,7 @@
     using HappiestProgrammer.Core.DataSources.StackOverflow;
     using HappiestProgrammer.Core.Models;
     using Newtonsoft.Json;
+    using System.Linq;
 
     public class CommentDataLoader
     {
@@ -15,13 +16,10 @@
 
         public IEnumerable<Comment> ReadAllFromDisk(string path)
         {
-            foreach (var file in Directory.GetFiles(path))
-            {
-                foreach (var comment in JsonConvert.DeserializeObject<IEnumerable<Comment>>(File.ReadAllText(file)))
-                {
-                    yield return comment;
-                }
-            }
+            return Directory.GetFiles(path)
+                .SelectMany(file => File.ReadLines(file)
+                    .Where(line => !string.IsNullOrWhiteSpace(line))
+                    .Select(JsonConvert.DeserializeObject<Comment>));
         }
 
         public void WriteAllToDisk(string path, DateTime startTime, DateTime endTime)
@@ -40,8 +38,13 @@
                         using (var streamWriter = new StreamWriter(this.GetPath(path, lanugage, dataSource.Source, startTime, endTime)))
                         {
                             var serializer = new JsonSerializer();
-                            serializer.Serialize(streamWriter, dataSource.GetComments(lanugage, startTime, endTime));
-                            streamWriter.Flush();
+
+                            foreach (var comment in dataSource.GetComments(lanugage, startTime, endTime))
+                            {
+                                serializer.Serialize(streamWriter, comment);
+                                streamWriter.WriteLine();
+                                streamWriter.Flush();
+                            }
                         }
                     }
                     catch (Exception ex)
