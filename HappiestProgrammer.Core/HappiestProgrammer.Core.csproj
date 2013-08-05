@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DC81FDCF-42F6-4136-843D-878D57BE5E30}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HappiestProgrammer.Core</RootNamespace>
+    <AssemblyName>HappiestProgrammer.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=104.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="StacMan">
+      <HintPath>..\packages\StacMan.1.1.0.0\lib\net45\StacMan.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataSources\CommentDataLoader.cs" />
+    <Compile Include="DataSources\GitHub\GitHubClient.cs" />
+    <Compile Include="DataSources\ICommentRetriever.cs" />
+    <Compile Include="DataSources\StackOverflow\StackOverflowClient.cs" />
+    <Compile Include="LanguageTags.cs" />
+    <Compile Include="DataSources\Twitter\TwitterClient.cs" />
+    <Compile Include="SentimentAnalysis\ISentimentAnalyzer.cs" />
+    <Compile Include="SentimentAnalysis\SimpleWordScoreAnalysis.cs" />
+    <Compile Include="Utilities\LinqExtensions.cs" />
+    <Compile Include="Models\Comment.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\Sentiment.cs" />
+    <Compile Include="Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\StringExtensions.cs" />
+    <Compile Include="SentimentAnalysis\WordSentiments.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <Content Include="Resources\AFINN-111.txt" />
+    <Content Include="Resources\AFINN-README.txt" />
+    <Content Include="Resources\subjclueslen1-README.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\subjclueslen1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\SampleData\github_actionscript_20130731_20130801.json" />
+    <None Include="Resources\SampleData\github_ada_20130731_20130801.json" />
+    <None Include="Resources\SampleData\github_c++_20130731_20130801.json" />
+    <None Include="Resources\SampleData\github_csharp_20130731_20130801.json" />
+    <None Include="Resources\SampleData\github_c_20130731_20130801.json" />
+    <None Include="Resources\SampleData\github_delphi_20130731_20130801.json" />
+    <None Include="Resources\SampleData\github_d_20130731_20130801.json" />
+    <None Include="Resources\SampleData\github_erlang_20130731_20130801.json" />
+    <None Include="Resources\SampleData\github_forth_20130731_20130801.json" />
+    <None Include="Resources\SampleData\github_fortran_20130731_20130801.json" />
+    <None Include="Resources\SampleData\github_fsharp_20130731_20130801.json" />
+    <None Include="Resources\SampleData\github_go_20130731_20130801.json" />
+    <None Include="Resources\SampleData\github_haskell_20130731_20130801.json" />
+    <None Include="Resources\SampleData\github_javascript_20130731_20130801.json" />
+    <None Include="Resources\SampleData\github_java_20130731_20130801.json" />
+    <None Include="Resources\SampleData\github_lisp_20130731_20130801.json" />
+    <None Include="Resources\SampleData\github_lua_20130731_20130801.json" />
+    <None Include="Resources\SampleData\github_objective-c_20130731_20130801.json" />
+    <None Include="Resources\SampleData\github_ocaml_20130731_20130801.json" />
+    <None Include="Resources\SampleData\github_perl_20130731_20130801.json" />
+    <None Include="Resources\SampleData\github_php_20130731_20130801.json" />
+    <None Include="Resources\SampleData\github_python_20130731_20130801.json" />
+    <None Include="Resources\SampleData\github_ruby_20130731_20130801.json" />
+    <None Include="Resources\SampleData\github_r_20130731_20130801.json" />
+    <None Include="Resources\SampleData\github_scala_20130731_20130801.json" />
+    <None Include="Resources\SampleData\github_scheme_20130731_20130801.json" />
+    <None Include="Resources\SampleData\github_smalltalk_20130731_20130801.json" />
+    <None Include="Resources\SampleData\github_sql_20130731_20130801.json" />
+    <None Include="Resources\SampleData\github_tcl_20130731_20130801.json" />
+    <None Include="Resources\SampleData\github_vb.net_20130731_20130801.json" />
+    <None Include="Resources\SampleData\stackoverflow_actionscript_20130731_20130801.json" />
+    <None Include="Resources\SampleData\stackoverflow_ada_20130731_20130801.json" />
+    <None Include="Resources\SampleData\stackoverflow_c++_20130731_20130801.json" />
+    <None Include="Resources\SampleData\stackoverflow_csharp_20130731_20130801.json" />
+    <None Include="Resources\SampleData\stackoverflow_c_20130731_20130801.json" />
+    <None Include="Resources\SampleData\stackoverflow_delphi_20130731_20130801.json" />
+    <None Include="Resources\SampleData\stackoverflow_d_20130731_20130801.json" />
+    <None Include="Resources\SampleData\stackoverflow_erlang_20130731_20130801.json" />
+    <None Include="Resources\SampleData\stackoverflow_forth_20130731_20130801.json" />
+    <None Include="Resources\SampleData\stackoverflow_fortran_20130731_20130801.json" />
+    <None Include="Resources\SampleData\stackoverflow_fsharp_20130731_20130801.json" />
+    <None Include="Resources\SampleData\stackoverflow_go_20130731_20130801.json" />
+    <None Include="Resources\SampleData\stackoverflow_haskell_20130731_20130801.json" />
+    <None Include="Resources\SampleData\stackoverflow_javascript_20130731_20130801.json" />
+    <None Include="Resources\SampleData\stackoverflow_java_20130731_20130801.json" />
+    <None Include="Resources\SampleData\stackoverflow_lisp_20130731_20130801.json" />
+    <None Include="Resources\SampleData\stackoverflow_lua_20130731_20130801.json" />
+    <None Include="Resources\SampleData\stackoverflow_objective-c_20130731_20130801.json" />
+    <None Include="Resources\SampleData\stackoverflow_ocaml_20130731_20130801.json" />
+    <None Include="Resources\SampleData\stackoverflow_perl_20130731_20130801.json" />
+    <None Include="Resources\SampleData\stackoverflow_php_20130731_20130801.json" />
+    <None Include="Resources\SampleData\stackoverflow_python_20130731_20130801.json" />
+    <None Include="Resources\SampleData\stackoverflow_ruby_20130731_20130801.json" />
+    <None Include="Resources\SampleData\stackoverflow_r_20130731_20130801.json" />
+    <None Include="Resources\SampleData\stackoverflow_scala_20130731_20130801.json" />
+    <None Include="Resources\SampleData\stackoverflow_scheme_20130731_20130801.json" />
+    <None Include="Resources\SampleData\stackoverflow_smalltalk_20130731_20130801.json" />
+    <None Include="Resources\SampleData\stackoverflow_sql_20130731_20130801.json" />
+    <None Include="Resources\SampleData\stackoverflow_tcl_20130731_20130801.json" />
+    <None Include="Resources\SampleData\stackoverflow_vb.net_20130731_20130801.json" />
+    <None Include="Settings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\language_tags.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\negative-words.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\positive-words.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
