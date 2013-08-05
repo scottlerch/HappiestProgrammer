@@ -79,7 +79,9 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
-    <Content Include="Resources\AFINN-111.txt" />
+    <Content Include="Resources\AFINN-111.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\AFINN-README.txt" />
     <Content Include="Resources\subjclueslen1-README.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
