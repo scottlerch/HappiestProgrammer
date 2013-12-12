@@ -38,6 +38,23 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Data.Edm, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Edm.5.6.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.OData.5.6.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Services.Client.5.6.0\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.1.8.0.0\lib\net35-full\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WindowsAzure.Storage.3.0.1.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -46,6 +63,10 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Services.Client" />
+    <Reference Include="System.Spatial, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Spatial.5.6.0\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -57,243 +78,243 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\github_actionscript_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\github_actionscript_20130731_20130801.json">
       <Link>SampleData\github_actionscript_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\github_ada_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\github_ada_20130731_20130801.json">
       <Link>SampleData\github_ada_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\github_c++_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\github_c++_20130731_20130801.json">
       <Link>SampleData\github_c++_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\github_csharp_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\github_csharp_20130731_20130801.json">
       <Link>SampleData\github_csharp_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\github_c_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\github_c_20130731_20130801.json">
       <Link>SampleData\github_c_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\github_delphi_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\github_delphi_20130731_20130801.json">
       <Link>SampleData\github_delphi_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\github_d_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\github_d_20130731_20130801.json">
       <Link>SampleData\github_d_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\github_erlang_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\github_erlang_20130731_20130801.json">
       <Link>SampleData\github_erlang_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\github_forth_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\github_forth_20130731_20130801.json">
       <Link>SampleData\github_forth_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\github_fortran_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\github_fortran_20130731_20130801.json">
       <Link>SampleData\github_fortran_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\github_fsharp_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\github_fsharp_20130731_20130801.json">
       <Link>SampleData\github_fsharp_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\github_go_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\github_go_20130731_20130801.json">
       <Link>SampleData\github_go_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\github_haskell_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\github_haskell_20130731_20130801.json">
       <Link>SampleData\github_haskell_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\github_javascript_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\github_javascript_20130731_20130801.json">
       <Link>SampleData\github_javascript_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\github_java_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\github_java_20130731_20130801.json">
       <Link>SampleData\github_java_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\github_lisp_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\github_lisp_20130731_20130801.json">
       <Link>SampleData\github_lisp_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\github_lua_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\github_lua_20130731_20130801.json">
       <Link>SampleData\github_lua_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\github_objective-c_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\github_objective-c_20130731_20130801.json">
       <Link>SampleData\github_objective-c_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\github_ocaml_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\github_ocaml_20130731_20130801.json">
       <Link>SampleData\github_ocaml_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\github_perl_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\github_perl_20130731_20130801.json">
       <Link>SampleData\github_perl_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\github_php_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\github_php_20130731_20130801.json">
       <Link>SampleData\github_php_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\github_python_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\github_python_20130731_20130801.json">
       <Link>SampleData\github_python_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\github_ruby_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\github_ruby_20130731_20130801.json">
       <Link>SampleData\github_ruby_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\github_r_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\github_r_20130731_20130801.json">
       <Link>SampleData\github_r_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\github_scala_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\github_scala_20130731_20130801.json">
       <Link>SampleData\github_scala_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\github_scheme_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\github_scheme_20130731_20130801.json">
       <Link>SampleData\github_scheme_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\github_smalltalk_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\github_smalltalk_20130731_20130801.json">
       <Link>SampleData\github_smalltalk_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\github_sql_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\github_sql_20130731_20130801.json">
       <Link>SampleData\github_sql_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\github_tcl_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\github_tcl_20130731_20130801.json">
       <Link>SampleData\github_tcl_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\github_vb.net_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\github_vb.net_20130731_20130801.json">
       <Link>SampleData\github_vb.net_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\stackoverflow_actionscript_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\stackoverflow_actionscript_20130731_20130801.json">
       <Link>SampleData\stackoverflow_actionscript_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\stackoverflow_ada_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\stackoverflow_ada_20130731_20130801.json">
       <Link>SampleData\stackoverflow_ada_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\stackoverflow_c++_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\stackoverflow_c++_20130731_20130801.json">
       <Link>SampleData\stackoverflow_c++_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\stackoverflow_csharp_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\stackoverflow_csharp_20130731_20130801.json">
       <Link>SampleData\stackoverflow_csharp_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\stackoverflow_c_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\stackoverflow_c_20130731_20130801.json">
       <Link>SampleData\stackoverflow_c_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\stackoverflow_delphi_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\stackoverflow_delphi_20130731_20130801.json">
       <Link>SampleData\stackoverflow_delphi_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\stackoverflow_d_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\stackoverflow_d_20130731_20130801.json">
       <Link>SampleData\stackoverflow_d_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\stackoverflow_erlang_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\stackoverflow_erlang_20130731_20130801.json">
       <Link>SampleData\stackoverflow_erlang_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\stackoverflow_forth_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\stackoverflow_forth_20130731_20130801.json">
       <Link>SampleData\stackoverflow_forth_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\stackoverflow_fortran_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\stackoverflow_fortran_20130731_20130801.json">
       <Link>SampleData\stackoverflow_fortran_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\stackoverflow_fsharp_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\stackoverflow_fsharp_20130731_20130801.json">
       <Link>SampleData\stackoverflow_fsharp_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\stackoverflow_go_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\stackoverflow_go_20130731_20130801.json">
       <Link>SampleData\stackoverflow_go_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\stackoverflow_haskell_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\stackoverflow_haskell_20130731_20130801.json">
       <Link>SampleData\stackoverflow_haskell_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\stackoverflow_javascript_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\stackoverflow_javascript_20130731_20130801.json">
       <Link>SampleData\stackoverflow_javascript_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\stackoverflow_java_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\stackoverflow_java_20130731_20130801.json">
       <Link>SampleData\stackoverflow_java_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\stackoverflow_lisp_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\stackoverflow_lisp_20130731_20130801.json">
       <Link>SampleData\stackoverflow_lisp_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\stackoverflow_lua_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\stackoverflow_lua_20130731_20130801.json">
       <Link>SampleData\stackoverflow_lua_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\stackoverflow_objective-c_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\stackoverflow_objective-c_20130731_20130801.json">
       <Link>SampleData\stackoverflow_objective-c_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\stackoverflow_ocaml_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\stackoverflow_ocaml_20130731_20130801.json">
       <Link>SampleData\stackoverflow_ocaml_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\stackoverflow_perl_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\stackoverflow_perl_20130731_20130801.json">
       <Link>SampleData\stackoverflow_perl_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\stackoverflow_php_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\stackoverflow_php_20130731_20130801.json">
       <Link>SampleData\stackoverflow_php_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\stackoverflow_python_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\stackoverflow_python_20130731_20130801.json">
       <Link>SampleData\stackoverflow_python_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\stackoverflow_ruby_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\stackoverflow_ruby_20130731_20130801.json">
       <Link>SampleData\stackoverflow_ruby_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\stackoverflow_r_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\stackoverflow_r_20130731_20130801.json">
       <Link>SampleData\stackoverflow_r_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\stackoverflow_scala_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\stackoverflow_scala_20130731_20130801.json">
       <Link>SampleData\stackoverflow_scala_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\stackoverflow_scheme_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\stackoverflow_scheme_20130731_20130801.json">
       <Link>SampleData\stackoverflow_scheme_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\stackoverflow_smalltalk_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\stackoverflow_smalltalk_20130731_20130801.json">
       <Link>SampleData\stackoverflow_smalltalk_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\stackoverflow_sql_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\stackoverflow_sql_20130731_20130801.json">
       <Link>SampleData\stackoverflow_sql_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\stackoverflow_tcl_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\stackoverflow_tcl_20130731_20130801.json">
       <Link>SampleData\stackoverflow_tcl_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\HappiestProgrammer.Core\Resources\SampleData\stackoverflow_vb.net_20130731_20130801.json">
+    <None Include="..\Core\Resources\SampleData\stackoverflow_vb.net_20130731_20130801.json">
       <Link>SampleData\stackoverflow_vb.net_20130731_20130801.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -302,11 +323,14 @@
     <Content Include="Settings.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="PrivateAppSettings.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HappiestProgrammer.Core\HappiestProgrammer.Core.csproj">
+    <ProjectReference Include="..\Core\Core.csproj">
       <Project>{dc81fdcf-42f6-4136-843d-878d57be5e30}</Project>
-      <Name>HappiestProgrammer.Core</Name>
+      <Name>Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
