@@ -1,13 +1,17 @@
+using HappiestProgrammer.Core.DataSources;
+using HappiestProgrammer.Core.DataSources.GitHub;
+using HappiestProgrammer.Core.DataSources.Mock;
+using HappiestProgrammer.Core.DataSources.StackOverflow;
+using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.ServiceRuntime;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
+using System.IO;
 using System.Net;
 using System.Threading;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Diagnostics;
-using Microsoft.WindowsAzure.ServiceRuntime;
-using Microsoft.WindowsAzure.Storage;
 
 namespace HappiestProgrammer.DataLoader
 {
@@ -15,14 +19,48 @@ namespace HappiestProgrammer.DataLoader
     {
         public override void Run()
         {
-            // This is a sample worker implementation. Replace with your logic.
             Trace.TraceInformation("DataLoader entry point called", "Information");
 
             while (true)
             {
-                Thread.Sleep(10000);
                 Trace.TraceInformation("Working", "Information");
+                Thread.Sleep(60000 * 5);
+
+                try
+                {
+                    var dataLoader = new CommentDataLoader(new ICommentRetriever[] { new MockClient() });
+
+                    var startTime = new DateTime(2013, 8, 31, 0, 0, 0, DateTimeKind.Utc);
+                    var endTime = startTime.AddDays(1);
+
+                    var container = GetCommentsBlobContainer();
+
+                    var date = new DateTime(2013, 8, 31, 0, 0, 0, DateTimeKind.Utc);
+
+                    dataLoader.Write(date, fileName => new MemoryStream(), (fileName, stream) =>
+                    {
+                        Trace.TraceInformation("Writing Blob: {0}", fileName);
+
+                        var blockBlob = container.GetBlockBlobReference(fileName);
+
+                        stream.Position = 0;
+                        blockBlob.UploadFromStream(stream);
+                    });
+                }
+                catch(Exception ex)
+                {
+                    Trace.TraceError("Error loading data: {0}", ex);
+                }
             }
+        }
+
+        private static CloudBlobContainer GetCommentsBlobContainer()
+        {
+            var storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
+
+            var blobClient = storageAccount.CreateCloudBlobClient();
+
+            return blobClient.GetContainerReference("comments");
         }
 
         public override bool OnStart()

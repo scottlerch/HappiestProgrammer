@@ -108,3 +108,5 @@ Backup*/
 UpgradeLog*.XML
 
 /Runner/PrivateAppSettings.config
+
+/CloudServices/Profiles/happiestprogrammerProduction.azurePubxml
