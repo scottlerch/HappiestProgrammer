@@ -8,10 +8,10 @@
     using StackExchange.StacMan;
     using Answers = StackExchange.StacMan.Answers;
     using Questions = StackExchange.StacMan.Questions;
+    using System.Diagnostics;
 
     public class StackOverflowClient : ICommentRetriever
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private readonly StacManClient client;
 
         public StackOverflowClient()
@@ -80,7 +80,7 @@
                     {
                         if (commentsResult.Data == null || commentsResult.Data.Items == null)
                         {
-                            log.Error("No data found");
+                            Trace.TraceError("No data found");
                             yield break;
                         }
 
@@ -94,7 +94,7 @@
                     }
                     else
                     {
-                        log.Error("Unable to load comments", commentsResult.Error);
+                        Trace.TraceError("Unable to load comments: {0}", commentsResult.Error);
                         yield break;
                     }
                 }
@@ -127,7 +127,7 @@
                     {
                         if (answersResult.Data == null || answersResult.Data.Items == null)
                         {
-                            log.Error("No data found");
+                            Trace.TraceError("No data found");
                             yield break;
                         }
 
@@ -141,7 +141,7 @@
                     }
                     else
                     {
-                        log.Error("Unable to load answers", answersResult.Error);
+                        Trace.TraceError("Unable to load answers: {0}", answersResult.Error);
                         yield break;
                     }
                 }
@@ -173,7 +173,7 @@
                 {
                     if (searchResults.Data == null || searchResults.Data.Items == null)
                     {
-                        log.Error("No data found");
+                        Trace.TraceError("No data found");
                         yield break;
                     }
 
@@ -187,7 +187,7 @@
                 }
                 else
                 {
-                    log.Error("Unable to load answers", searchResults.Error);
+                    Trace.TraceError("Unable to load answers", searchResults.Error);
                     yield break;
                 }
             }

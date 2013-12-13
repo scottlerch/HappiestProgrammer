@@ -10,21 +10,18 @@
     using Microsoft.WindowsAzure.Storage.Blob;
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.IO;
     using System.Linq;
 
     internal class Program
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
         private static IEnumerable<ICommentRetriever> DefaultCommentRetrievers = new ICommentRetriever[] { new StackOverflowClient(), new GitHubClient() };
         private static IEnumerable<ICommentRetriever> MockCommentRetrievers = new ICommentRetriever[] { new MockClient() };
 
         internal static void Main()
         {
-            log4net.Config.XmlConfigurator.Configure();
-
-            log.Info("Starting application...");
+            Trace.TraceInformation("Starting application...");
 
             //LoadFromMockDataSource();
             //CalculateSentimentFromDisk();
@@ -32,7 +29,7 @@
             LoadFromDataSourceIntoAzure();
             CalculateSentimentFromAzure();
 
-            log.Info("Complete!");
+            Trace.TraceInformation("Complete!");
 
             Console.ReadKey();
         }
@@ -61,7 +58,7 @@
         {
             var dataLoader = new CommentDataLoader(MockCommentRetrievers);
 
-            var container = GetCommentsBlobContainer()
+            var container = GetCommentsBlobContainer();
 
             var commentsByLanguage = dataLoader.Read(() => GetBlobStreams(container))
                 .ToLookup(comment => comment.Language);
@@ -76,7 +73,7 @@
 
             foreach (var languageScore in sortedScores)
             {
-                log.InfoFormat("{0,-15}{1}", languageScore.Language, languageScore.Score);
+                Trace.TraceInformation("{0,-15}{1}", languageScore.Language, languageScore.Score);
             }
         }
 
@@ -133,7 +130,7 @@
 
             foreach (var languageScore in sortedScores)
             {
-                log.InfoFormat("{0,-15}{1}", languageScore.Language, languageScore.Score);
+                Trace.TraceInformation("{0,-15}{1}", languageScore.Language, languageScore.Score);
             }
         }
 

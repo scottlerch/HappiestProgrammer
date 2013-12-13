@@ -4,14 +4,13 @@
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
 
     public class CommentDataLoader
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
         private readonly IEnumerable<ICommentRetriever> dataSources;
 
         public CommentDataLoader(IEnumerable<ICommentRetriever> dataSources)
@@ -75,7 +74,7 @@
                     }
                     catch (Exception ex)
                     {
-                        log.Error(string.Format("Error writing file for {0} from {1}", lanugage, dataSource.Source), ex);
+                        Trace.TraceError("Error writing file for {0} from {1}: {2}", lanugage, dataSource.Source, ex);
                     }
                 }));
         }

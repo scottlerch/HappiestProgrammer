@@ -10,7 +10,6 @@
 
     public class GitHubClient : ICommentRetriever
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private readonly RestClient client;
 
         public GitHubClient()
