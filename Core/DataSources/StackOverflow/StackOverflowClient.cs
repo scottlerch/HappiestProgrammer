@@ -188,7 +188,7 @@
                 }
                 else
                 {
-                    Trace.TraceError("Unable to load answers", searchResults.Error);
+                    Trace.TraceError("Unable to load answers: {0}", searchResults.Error);
                     yield break;
                 }
             }
