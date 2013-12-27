@@ -36,7 +36,7 @@
 
         private static void LoadFromDataSourceIntoAzure()
         {
-            var dataLoader = new CommentDataLoader(MockCommentRetrievers);
+            var dataLoader = new CommentDataLoader(new ICommentRetriever[] { new GitHubClient() });
 
             var startTime = new DateTime(2013, 8, 31, 0, 0, 0, DateTimeKind.Utc);
             var endTime = startTime.AddDays(1);

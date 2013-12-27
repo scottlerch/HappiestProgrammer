@@ -1,13 +1,12 @@
 using HappiestProgrammer.Core.DataSources;
 using HappiestProgrammer.Core.DataSources.GitHub;
-using HappiestProgrammer.Core.DataSources.Mock;
 using HappiestProgrammer.Core.DataSources.StackOverflow;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.ServiceRuntime;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.WindowsAzure.Storage.Queue;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
@@ -21,22 +20,42 @@ namespace HappiestProgrammer.DataLoader
         {
             Trace.TraceInformation("DataLoader entry point called", "Information");
 
+            CommentDataLoader dataLoader = null;
+
+            try
+            {
+                dataLoader = new CommentDataLoader(new ICommentRetriever[] { new StackOverflowClient(), new GitHubClient() });
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceError("Fatal error, unable to create data loader: {0}", ex);
+                return;
+            }
+
             while (true)
             {
-                Trace.TraceInformation("Working", "Information");
+                Trace.TraceInformation("Starting data load...");
 
                 try
                 {
-                    var dataLoader = new CommentDataLoader(new ICommentRetriever[] { new MockClient() });
+                    var queue = GetLoadDataQueue();
+                    CloudQueueMessage retrievedMessage;
 
-                    var startTime = new DateTime(2013, 8, 31, 0, 0, 0, DateTimeKind.Utc);
-                    var endTime = startTime.AddDays(1);
+                    while ((retrievedMessage = queue.GetMessage(visibilityTimeout: TimeSpan.FromHours(6))) == null)
+                    {
+                        Thread.Sleep((int)TimeSpan.FromMinutes(1).TotalMilliseconds);
+                    }
+
+                    Trace.TraceInformation("Got message from queue: {0}", retrievedMessage.Id);
+
+                    var endTime = retrievedMessage.InsertionTime.Value.UtcDateTime.Date;
+                    var startTime = endTime.AddDays(-1);
+
+                    Trace.TraceInformation("Loading data from {0} to {1}", startTime, endTime);
 
                     var container = GetCommentsBlobContainer();
 
-                    var date = new DateTime(2013, 8, 31, 0, 0, 0, DateTimeKind.Utc);
-
-                    dataLoader.Write(date, fileName => new MemoryStream(), (fileName, stream) =>
+                    dataLoader.Write(startTime, fileName => new MemoryStream(), (fileName, stream) =>
                     {
                         Trace.TraceInformation("Writing Blob: {0}", fileName);
 
@@ -45,13 +64,14 @@ namespace HappiestProgrammer.DataLoader
                         stream.Position = 0;
                         blockBlob.UploadFromStream(stream);
                     });
+
+                    queue.DeleteMessage(retrievedMessage);
                 }
                 catch(Exception ex)
                 {
                     Trace.TraceError("Error loading data: {0}", ex);
+                    Thread.Sleep((int)TimeSpan.FromMinutes(1).TotalMilliseconds);
                 }
-
-                Thread.Sleep(60000 * 5);
             }
         }
 
@@ -62,6 +82,17 @@ namespace HappiestProgrammer.DataLoader
             var blobClient = storageAccount.CreateCloudBlobClient();
 
             return blobClient.GetContainerReference("comments");
+        }
+
+        private static CloudQueue GetLoadDataQueue()
+        {
+            var storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
+
+            var queueClient = storageAccount.CreateCloudQueueClient();
+
+            var queue = queueClient.GetQueueReference("loaddata");
+
+            return queue;
         }
 
         public override bool OnStart()
