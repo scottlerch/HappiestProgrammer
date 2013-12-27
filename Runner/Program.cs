@@ -4,6 +4,7 @@
     using HappiestProgrammer.Core.DataSources.GitHub;
     using HappiestProgrammer.Core.DataSources.Mock;
     using HappiestProgrammer.Core.DataSources.StackOverflow;
+    using HappiestProgrammer.Core.Models;
     using HappiestProgrammer.Core.SentimentAnalysis;
     using Microsoft.WindowsAzure;
     using Microsoft.WindowsAzure.Storage;
@@ -26,7 +27,7 @@
             //LoadFromMockDataSource();
             //CalculateSentimentFromDisk();
 
-            LoadFromDataSourceIntoAzure();
+            //LoadFromDataSourceIntoAzure();
             CalculateSentimentFromAzure();
 
             Trace.TraceInformation("Complete!");
@@ -56,12 +57,18 @@
 
         private static void CalculateSentimentFromAzure()
         {
-            var dataLoader = new CommentDataLoader(MockCommentRetrievers);
+            var dataLoader = new CommentDataLoader();
 
             var container = GetCommentsBlobContainer();
 
-            var commentsByLanguage = dataLoader.Read(() => GetBlobStreams(container))
-                .ToLookup(comment => comment.Language);
+            IEnumerable<Comment> comments = Enumerable.Empty<Comment>();
+
+            foreach (var source in new[] { "mock" })
+            {
+                comments = comments.Concat(dataLoader.Read(() => GetBlobStreams(source + "/", container)));
+            }
+
+            var commentsByLanguage = comments.ToLookup(comment => comment.Language);
 
             var analyzer = new SimpleWordScoreAnalysis();
 
@@ -86,9 +93,9 @@
             return blobClient.GetContainerReference("comments");
         }
 
-        private static IEnumerable<Stream> GetBlobStreams(Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer container)
+        private static IEnumerable<Stream> GetBlobStreams(string prefix, Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer container)
         {
-            foreach (var blob in container.ListBlobs(prefix: null, useFlatBlobListing: true).Cast<CloudBlockBlob>())
+            foreach (var blob in container.ListBlobs(prefix, useFlatBlobListing: true).Cast<CloudBlockBlob>())
             {
                 using (var ms = new MemoryStream())
                 {

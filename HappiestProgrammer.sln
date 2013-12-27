@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLoader", "DataLoader\Da
 EndProject
 Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "CloudServices", "CloudServices\CloudServices.ccproj", "{93FB6B12-765E-424A-8CEF-72E7EF07CF86}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SentimentCalculator", "SentimentCalculator\SentimentCalculator.csproj", "{F5AA8AAF-C5CA-48CC-826D-1AF7C3461BA2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +48,10 @@ Global
 		{93FB6B12-765E-424A-8CEF-72E7EF07CF86}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93FB6B12-765E-424A-8CEF-72E7EF07CF86}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93FB6B12-765E-424A-8CEF-72E7EF07CF86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5AA8AAF-C5CA-48CC-826D-1AF7C3461BA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5AA8AAF-C5CA-48CC-826D-1AF7C3461BA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5AA8AAF-C5CA-48CC-826D-1AF7C3461BA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5AA8AAF-C5CA-48CC-826D-1AF7C3461BA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

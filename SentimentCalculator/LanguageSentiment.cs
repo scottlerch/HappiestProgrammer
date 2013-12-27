@@ -1,0 +1,26 @@
+﻿using Microsoft.WindowsAzure.Storage.Table;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SentimentCalculator
+{
+    public class LanguageSentiment : TableEntity
+    {
+        public LanguageSentiment(string language, DateTime date, double score)
+        {
+            this.PartitionKey = date.ToString("yyyyMMdd");
+            this.RowKey = language + date.ToString("_yyyyMMdd");
+            this.Date = date;
+            this.Score = score;
+        }
+
+        public LanguageSentiment() { }
+
+        public DateTime Date { get; set; }
+
+        public double Score { get; set; }
+    }
+}

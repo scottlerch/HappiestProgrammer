@@ -13,6 +13,11 @@
     {
         private readonly IEnumerable<ICommentRetriever> dataSources;
 
+        public CommentDataLoader()
+        {
+            this.dataSources = Enumerable.Empty<ICommentRetriever>();
+        }
+
         public CommentDataLoader(IEnumerable<ICommentRetriever> dataSources)
         {
             this.dataSources = dataSources;

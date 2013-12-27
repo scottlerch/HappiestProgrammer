@@ -39,9 +39,13 @@
   <ItemGroup>
     <Folder Include="DataLoaderContent\" />
     <Folder Include="Profiles" />
+    <Folder Include="SentimentCalculatorContent\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="DataLoaderContent\diagnostics.wadcfg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="SentimentCalculatorContent\diagnostics.wadcfg">
       <SubType>Content</SubType>
     </Content>
   </ItemGroup>
@@ -55,6 +59,14 @@
       <Private>True</Private>
       <RoleType>Worker</RoleType>
       <RoleName>DataLoader</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
+    </ProjectReference>
+    <ProjectReference Include="..\SentimentCalculator\SentimentCalculator.csproj">
+      <Name>SentimentCalculator</Name>
+      <Project>{f5aa8aaf-c5ca-48cc-826d-1af7c3461ba2}</Project>
+      <Private>True</Private>
+      <RoleType>Worker</RoleType>
+      <RoleName>SentimentCalculator</RoleName>
       <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
     </ProjectReference>
   </ItemGroup>
