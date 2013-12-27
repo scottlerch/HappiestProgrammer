@@ -24,7 +24,6 @@ namespace HappiestProgrammer.DataLoader
             while (true)
             {
                 Trace.TraceInformation("Working", "Information");
-                Thread.Sleep(60000 * 5);
 
                 try
                 {
@@ -51,6 +50,8 @@ namespace HappiestProgrammer.DataLoader
                 {
                     Trace.TraceError("Error loading data: {0}", ex);
                 }
+
+                Thread.Sleep(60000 * 5);
             }
         }
 

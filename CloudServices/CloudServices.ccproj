@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>2.2</ProductVersion>
-    <ProjectGuid>6bcde1cf-60ae-487e-a813-bd8da4b85e5a</ProjectGuid>
+    <ProjectGuid>93fb6b12-765e-424a-8cef-72e7ef07cf86</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CloudServices</RootNamespace>
@@ -37,6 +37,22 @@
     <ServiceConfiguration Include="ServiceConfiguration.Cloud.cscfg" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="DataLoaderContent\" />
+    <Folder Include="Profiles" />
+    <Folder Include="TestRoleContent\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DataLoaderContent\diagnostics.wadcfg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="TestRoleContent\diagnostics.wadcfg">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <PublishProfile Include="Profiles\happiestprogrammerProduction.azurePubxml" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\DataLoader\DataLoader.csproj">
       <Name>DataLoader</Name>
       <Project>{12606e31-9edf-4a1e-88e9-ddfaa4023df1}</Project>
@@ -45,18 +61,6 @@
       <RoleName>DataLoader</RoleName>
       <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DataLoaderContent\" />
-    <Folder Include="Profiles" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="DataLoaderContent\diagnostics.wadcfg">
-      <SubType>Content</SubType>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <PublishProfile Include="Profiles\happiestprogrammerProduction.azurePubxml" />
   </ItemGroup>
   <!-- Import the target files for this project template -->
   <PropertyGroup>

@@ -9,6 +9,7 @@
     using Answers = StackExchange.StacMan.Answers;
     using Questions = StackExchange.StacMan.Questions;
     using System.Diagnostics;
+    using System.Configuration;
 
     public class StackOverflowClient : ICommentRetriever
     {
@@ -16,7 +17,7 @@
 
         public StackOverflowClient()
         {
-            this.client =  new StacManClient(Settings.Default.StackOverflowKey);
+            this.client = new StacManClient(ConfigurationManager.AppSettings["StackOverflowKey"]);
         }
 
         public string Source

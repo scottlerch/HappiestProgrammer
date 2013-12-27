@@ -7,6 +7,7 @@
     using HappiestProgrammer.Core.Models;
     using Newtonsoft.Json;
     using RestSharp;
+    using System.Configuration;
 
     public class GitHubClient : ICommentRetriever
     {
@@ -15,7 +16,7 @@
         public GitHubClient()
         {
             this.client = new RestClient("https://api.github.com");
-            this.client.AddDefaultHeader("Authorization", "token " + Settings.Default.GitHubToken);
+            this.client.AddDefaultHeader("Authorization", "token " + ConfigurationManager.AppSettings["GitHubToken"]);
         }
 
         public string Source
