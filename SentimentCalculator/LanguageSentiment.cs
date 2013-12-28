@@ -14,12 +14,15 @@ namespace SentimentCalculator
             this.PartitionKey = date.ToString("yyyyMMdd");
             this.RowKey = language.Replace("#", "sharp") + date.ToString("_yyyyMMdd");
             this.Date = date;
+            this.Language = language;
             this.Score = score;
         }
 
         public LanguageSentiment() { }
 
         public DateTime Date { get; set; }
+
+        public string Language { get; set; }
 
         public double Score { get; set; }
     }
