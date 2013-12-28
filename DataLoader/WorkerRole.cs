@@ -6,6 +6,7 @@ using Microsoft.WindowsAzure.ServiceRuntime;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using Microsoft.WindowsAzure.Storage.Queue;
+using Newtonsoft.Json;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -65,6 +66,10 @@ namespace HappiestProgrammer.DataLoader
                         blockBlob.UploadFromStream(stream);
                     });
 
+                    var calculateSentimentQueue = GetCalculateSentimentQueue();
+
+                    calculateSentimentQueue.AddMessage(new CloudQueueMessage(JsonConvert.SerializeObject(new { Date = startTime })));
+
                     queue.DeleteMessage(retrievedMessage);
                 }
                 catch(Exception ex)
@@ -91,6 +96,17 @@ namespace HappiestProgrammer.DataLoader
             var queueClient = storageAccount.CreateCloudQueueClient();
 
             var queue = queueClient.GetQueueReference("loaddata");
+
+            return queue;
+        }
+
+        private static CloudQueue GetCalculateSentimentQueue()
+        {
+            var storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
+
+            var queueClient = storageAccount.CreateCloudQueueClient();
+
+            var queue = queueClient.GetQueueReference("calculatesentiment");
 
             return queue;
         }
