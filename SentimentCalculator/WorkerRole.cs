@@ -61,28 +61,8 @@ namespace SentimentCalculator
 
                     var analyzer = new SimpleWordScoreAnalysis();
 
-                    Trace.TraceInformation("Analyzing comments...");
-
-                    var languageScores = analyzer.GetLanguageAnalysis(commentsByLanguage);
-
-                    var sortedScores = languageScores
-                        .Select(p => new { Language = p.Key, Score = p.Value })
-                        .OrderByDescending(p => p.Score);
-
-                    Trace.TraceInformation("Inserting comments into table...");
-
-                    var table = GetSentimentsTable();
-                    table.CreateIfNotExists();
-
-                    var tableOperation = new TableBatchOperation();
-
-                    foreach (var score in sortedScores)
-                    {
-                        tableOperation.InsertOrReplace(
-                            new LanguageSentiment(score.Language, date, score.Score));
-                    }
-
-                    table.ExecuteBatch(tableOperation);
+                    RankLanguages(analyzer, commentsByLanguage, date);
+                    RankComments(analyzer, commentsByLanguage, date);
 
                     queue.DeleteMessage(retrievedMessage);
                 }
@@ -92,6 +72,60 @@ namespace SentimentCalculator
                     Thread.Sleep((int)TimeSpan.FromMinutes(1).TotalMilliseconds);
                 }
             }
+        }
+
+        private void RankLanguages(SimpleWordScoreAnalysis analyzer, ILookup<string, Comment> commentsByLanguage, DateTime date)
+        {
+            Trace.TraceInformation("Analyzing languages...");
+
+            var languageScores = analyzer.GetLanguageAnalysis(commentsByLanguage);
+
+            var sortedScores = languageScores
+                .Select(p => new { Language = p.Key, Score = p.Value })
+                .OrderByDescending(p => p.Score);
+
+            Trace.TraceInformation("Inserting language into table...");
+
+            var table = GetSentimentsTable();
+            table.CreateIfNotExists();
+
+            var tableOperation = new TableBatchOperation();
+
+            foreach (var score in sortedScores)
+            {
+                tableOperation.InsertOrReplace(
+                    new LanguageSentimentEntity(score.Language, date, score.Score));
+            }
+
+            table.ExecuteBatch(tableOperation);
+        }
+
+        private void RankComments(SimpleWordScoreAnalysis analyzer, ILookup<string, Comment> commentsByLanguage, DateTime date)
+        {
+            Trace.TraceInformation("Analyzing comments...");
+
+            var commentScores = analyzer.GetCommentSentimentLists(commentsByLanguage);
+
+            Trace.TraceInformation("Inserting comment scores into table...");
+
+            var table = GetCommentScoresTable();
+            table.CreateIfNotExists();
+
+            var tableOperation = new TableBatchOperation();
+
+            foreach (var commentScore in commentScores.Top)
+            {
+                tableOperation.InsertOrReplace(
+                    new CommentEntity(commentScore.Comment.Language, date, commentScore.Score, commentScore.Comment.Text));
+            }
+
+            foreach (var commentScore in commentScores.Bottom)
+            {
+                tableOperation.InsertOrReplace(
+                    new CommentEntity(commentScore.Comment.Language, date, commentScore.Score, commentScore.Comment.Text));
+            }
+
+            table.ExecuteBatch(tableOperation);
         }
 
         private static CloudQueue GetLoadDataQueue()
@@ -121,6 +155,15 @@ namespace SentimentCalculator
             var tableClient = storageAccount.CreateCloudTableClient();
 
             return tableClient.GetTableReference("languagesentiments");
+        }
+
+        private static CloudTable GetCommentScoresTable()
+        {
+            var storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
+
+            var tableClient = storageAccount.CreateCloudTableClient();
+
+            return tableClient.GetTableReference("commentscores");
         }
 
         private static IEnumerable<Stream> GetBlobStreams(string prefix, Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer container)

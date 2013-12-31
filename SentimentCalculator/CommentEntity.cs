@@ -7,23 +7,26 @@ using System.Threading.Tasks;
 
 namespace SentimentCalculator
 {
-    public class LanguageSentiment : TableEntity
+    public class CommentEntity : TableEntity
     {
-        public LanguageSentiment(string language, DateTime date, double score)
+        public CommentEntity(string language, DateTime date, double score, string comment)
         {
             this.PartitionKey = date.ToString("yyyyMMdd");
-            this.RowKey = language.Replace("#", "sharp") + date.ToString("_yyyyMMdd");
+            this.RowKey = Guid.NewGuid().ToString();
             this.Date = date;
             this.Language = language;
             this.Score = score;
+            this.Comment = comment;
         }
 
-        public LanguageSentiment() { }
+        public CommentEntity() { }
 
         public DateTime Date { get; set; }
 
         public string Language { get; set; }
 
         public double Score { get; set; }
+
+        public string Comment { get; set; }
     }
 }

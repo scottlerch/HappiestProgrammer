@@ -80,6 +80,8 @@
     <Compile Include="DataSources\StackOverflow\StackOverflowClient.cs" />
     <Compile Include="LanguageTags.cs" />
     <Compile Include="DataSources\Twitter\TwitterClient.cs" />
+    <Compile Include="Models\CommentScore.cs" />
+    <Compile Include="Models\CommentScoreLists.cs" />
     <Compile Include="SentimentAnalysis\ISentimentAnalyzer.cs" />
     <Compile Include="SentimentAnalysis\SimpleWordScoreAnalysis.cs" />
     <Compile Include="Utilities\LinqExtensions.cs" />

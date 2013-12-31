@@ -49,7 +49,23 @@ namespace HappiestProgrammer.DataLoader
 
                     Trace.TraceInformation("Got message from queue: {0}", retrievedMessage.Id);
 
-                    var endTime = retrievedMessage.InsertionTime.Value.UtcDateTime.Date;
+                    DateTime endTime;
+
+                    try
+                    {
+                        dynamic data = JsonConvert.DeserializeObject<dynamic>(retrievedMessage.AsString);
+
+                        endTime = ((DateTime)data.Date).Date.AddDays(1);
+
+                        Trace.TraceInformation("Parsed Date from JSON");
+                    }
+                    catch
+                    {
+                        endTime = retrievedMessage.InsertionTime.Value.UtcDateTime.Date;
+
+                        Trace.TraceInformation("Using insertion timestamp");
+                    }
+
                     var startTime = endTime.AddDays(-1);
 
                     Trace.TraceInformation("Loading data from {0} to {1}", startTime, endTime);
