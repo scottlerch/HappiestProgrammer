@@ -72,8 +72,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommentEntity.cs" />
-    <Compile Include="LanguageSentimentEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WorkerRole.cs" />
   </ItemGroup>

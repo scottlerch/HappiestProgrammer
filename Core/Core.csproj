@@ -78,6 +78,8 @@
     <Compile Include="DataSources\ICommentRetriever.cs" />
     <Compile Include="DataSources\Mock\MockClient.cs" />
     <Compile Include="DataSources\StackOverflow\StackOverflowClient.cs" />
+    <Compile Include="Entities\CommentEntity.cs" />
+    <Compile Include="Entities\LanguageSentimentEntity.cs" />
     <Compile Include="LanguageTags.cs" />
     <Compile Include="DataSources\Twitter\TwitterClient.cs" />
     <Compile Include="Models\CommentScore.cs" />

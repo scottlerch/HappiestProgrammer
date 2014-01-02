@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SentimentCalculator
+namespace HappiestProgrammer.Core.Entities
 {
     public class LanguageSentimentEntity : TableEntity
     {

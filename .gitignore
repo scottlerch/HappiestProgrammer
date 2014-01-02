@@ -110,3 +110,5 @@ UpgradeLog*.XML
 /Runner/PrivateAppSettings.config
 
 /CloudServices/Profiles/happiestprogrammerProduction.azurePubxml
+
+/WebApp/PrivateAppSettings.config
