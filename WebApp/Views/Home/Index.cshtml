@@ -1,6 +1,6 @@
 ﻿<div id="body">
     <section class="featured">
-        <div class="content-wrapper">
+        <div class="content-wrapper" ng-controller="HomeCtrl">
             <hgroup class="title">
                 <h1>Welcome to Happiest Programmer!</h1>
             </hgroup>
@@ -8,6 +8,16 @@
                 Happiest Programmer ranks the happiest (or grumpiest) programmers using sentiment analysis on
                 data from StackOverflow and GitHub.
             </p>
+            <table>
+                <tr ng-repeat="language in languages">
+                    <td>
+                        {{language.Name}}
+                    </td>
+                    <td>
+                        {{language.Score}}
+                    </td>
+                </tr>
+            </table>
         </div>
     </section>
 </div>
