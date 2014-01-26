@@ -4,6 +4,7 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web.Http;
 using WebApp.Models;
@@ -19,9 +20,15 @@ namespace WebApp.Controllers
 
             var query = new TableQuery<LanguageSentimentEntity>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, date.ToString("yyyyMMdd")));
 
-            foreach (var entity in table.ExecuteQuery(query).OrderBy(s => s.Score))
+            var rank = 1;
+            foreach (var entity in table.ExecuteQuery(query).OrderByDescending(s => s.Score))
             {
-                yield return new Language { Name = entity.Language, Score = entity.Score };
+                yield return new Language 
+                { 
+                    Name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(entity.Language), 
+                    Score = entity.Score,
+                    Rank = rank++ 
+                };
             }
         }
 

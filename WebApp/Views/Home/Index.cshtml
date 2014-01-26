@@ -1,23 +1,32 @@
-﻿<div id="body">
-    <section class="featured">
-        <div class="content-wrapper" ng-controller="HomeCtrl">
-            <hgroup class="title">
-                <h1>Welcome to Happiest Programmer!</h1>
-            </hgroup>
+﻿<div ng-controller="HomeCtrl">
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Happiest Programmer!</h1>
             <p>
                 Happiest Programmer ranks the happiest (or grumpiest) programmers using sentiment analysis on
                 data from StackOverflow and GitHub.
             </p>
-            <table>
-                <tr ng-repeat="language in languages">
-                    <td>
-                        {{language.Name}}
-                    </td>
-                    <td>
-                        {{language.Score}}
-                    </td>
-                </tr>
-            </table>
         </div>
-    </section>
+    </div>
+    <div class="container">
+        <div class="list-group">
+            <a href="#" class="list-group-item active">Rankings</a>
+            <a href="#" class="list-group-item" ng-repeat="language in languages">
+                <table class="rankings">
+                    <tr>
+                        <td class="rank">
+                            {{language.Rank}}
+                        </td>
+                        <td>
+                            {{language.Name}}
+                        </td>
+                    </tr>
+                </table>
+            </a>
+        </div>
+        <hr />
+        <footer>
+            <p>© Scott Lerch 2014</p>
+        </footer>
+    </div>
 </div>
