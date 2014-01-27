@@ -9,8 +9,22 @@
         </div>
     </div>
     <div class="container">
+        <p>
+            <table>
+                <tr>
+                    <td>
+                        <input type="text" data-provide="datepicker" class="form-control" ng-model="rankSelection.date" id="rankDate" />
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-default" ng-click="updateRankDate()">Update</button>
+                    </td>
+                </tr>
+            </table>
+        </p>
         <div class="list-group">
-            <a href="#" class="list-group-item active">Rankings</a>
+            <a href="#" class="list-group-item active">
+                <h4>Rankings</h4>
+            </a>
             <a href="#" class="list-group-item" ng-repeat="language in languages">
                 <table class="rankings">
                     <tr>

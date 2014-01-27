@@ -30,6 +30,12 @@ namespace WebApp
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                         "~/Scripts/bootstrap.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/less").Include(
+                        "~/Scripts/less-{version}.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap-datepicker").Include(
+                        "~/Scripts/bootstrap-datepicker.js"));
+
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
@@ -38,6 +44,9 @@ namespace WebApp
             bundles.Add(new StyleBundle("~/Content/css").Include(
                         "~/Content/bootstrap.css",
                         "~/Content/bootstrap-theme.css",
+                        "~/Content/bootstrap-datepicker.css",
+                        "~/Content/toastr.css",
+                        "~/Content/toastr.less",
                         "~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
