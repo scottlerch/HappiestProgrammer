@@ -26,7 +26,7 @@ namespace WebApp.Controllers
                 yield return new Language 
                 { 
                     Name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(entity.Language), 
-                    Score = entity.Score,
+                    Score = Math.Round(entity.Score, 2),
                     Rank = rank++ 
                 };
             }

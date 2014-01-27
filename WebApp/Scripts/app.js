@@ -3,6 +3,14 @@
 var urlConstant = 'api/languages?date=';
 var url = urlConstant.concat('2014-01-13');
 
+app.directive('repeatDone', function () {
+    return function (scope, element, attrs) {
+        if (scope.$last) { // all are rendered
+            setTimeout(function () { scope.$eval(attrs.repeatDone); }, 0);
+        }
+    }
+});
+
 app.factory('languageFactory', function ($http) {
     return {
         getLanguages: function () {
@@ -54,6 +62,10 @@ app.controller("HomeCtrl", function ($scope, languageFactory, notificationFactor
         languageFactory.getLanguages().success(getLanguagesSuccessCallback).error(errorCallback);
     };
 
+    $scope.layoutDone = function () {
+        $("[rel=tooltip]").tooltip({ placement: 'left' });
+    };
+
     var getLanguagesSuccessCallback = function (data, status) {
         $scope.languages = data;
     };
@@ -69,4 +81,9 @@ app.controller("HomeCtrl", function ($scope, languageFactory, notificationFactor
     };
 
     languageFactory.getLanguages().success(getLanguagesSuccessCallback).error(errorCallback);
+});
+
+
+$(document).ready(function () {
+    $("[rel=tooltip]").tooltip({ placement: 'left' });
 });
