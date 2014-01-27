@@ -11,13 +11,13 @@ app.directive('repeatDone', function () {
     }
 });
 
-app.factory('languageFactory', function ($http) {
+app.factory('languageFactory', ["$http", function ($http) {
     return {
         getLanguages: function () {
             return $http.get(url);
         },
     };
-});
+}]);
 
 app.factory('notificationFactory', function () {
 
@@ -45,7 +45,7 @@ var getDateParamter = function (d) {
     return dateParts[2].concat('-', dateParts[0], '-', dateParts[1])
 };
 
-app.controller("HomeCtrl", function ($scope, languageFactory, notificationFactory) {
+app.controller("HomeCtrl", ["$scope", "languageFactory", "notificationFactory", function ($scope, languageFactory, notificationFactory) {
     $scope.languages = [];
 
     var d = new Date();
@@ -81,7 +81,7 @@ app.controller("HomeCtrl", function ($scope, languageFactory, notificationFactor
     };
 
     languageFactory.getLanguages().success(getLanguagesSuccessCallback).error(errorCallback);
-});
+}]);
 
 
 $(document).ready(function () {
