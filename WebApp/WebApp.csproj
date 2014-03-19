@@ -160,20 +160,26 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LanguagesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Language.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-datepicker.css" />
     <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap-theme.min.css">
+      <DependentUpon>bootstrap-theme.css</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.min.css">
+      <DependentUpon>bootstrap.css</DependentUpon>
+    </Content>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -228,7 +234,9 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
-    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.css">
+      <DependentUpon>toastr.less</DependentUpon>
+    </Content>
     <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -241,41 +249,78 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\toastr.css.map">
+      <DependentUpon>toastr.css</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\happiestprogrammer.pubxml">
       <SubType>Designer</SubType>
     </None>
     <Content Include="Scripts\angular\angular-animate.js" />
-    <Content Include="Scripts\angular\angular-animate.min.js" />
+    <Content Include="Scripts\angular\angular-animate.min.js">
+      <DependentUpon>angular-animate.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\angular\angular-cookies.js" />
-    <Content Include="Scripts\angular\angular-cookies.min.js" />
+    <Content Include="Scripts\angular\angular-cookies.min.js">
+      <DependentUpon>angular-cookies.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\angular\angular-csp.css" />
     <Content Include="Scripts\angular\angular-loader.js" />
-    <Content Include="Scripts\angular\angular-loader.min.js" />
+    <Content Include="Scripts\angular\angular-loader.min.js">
+      <DependentUpon>angular-loader.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\angular\angular-mocks.js" />
     <Content Include="Scripts\angular\angular-resource.js" />
-    <Content Include="Scripts\angular\angular-resource.min.js" />
+    <Content Include="Scripts\angular\angular-resource.min.js">
+      <DependentUpon>angular-resource.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\angular\angular-route.js" />
-    <Content Include="Scripts\angular\angular-route.min.js" />
+    <Content Include="Scripts\angular\angular-route.min.js">
+      <DependentUpon>angular-route.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\angular\angular-sanitize.js" />
-    <Content Include="Scripts\angular\angular-sanitize.min.js" />
+    <Content Include="Scripts\angular\angular-sanitize.min.js">
+      <DependentUpon>angular-sanitize.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\angular\angular-scenario.js" />
     <Content Include="Scripts\angular\angular-touch.js" />
-    <Content Include="Scripts\angular\angular-touch.min.js" />
+    <Content Include="Scripts\angular\angular-touch.min.js">
+      <DependentUpon>angular-touch.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\angular\angular.js" />
-    <Content Include="Scripts\angular\angular.min.js" />
+    <Content Include="Scripts\angular\angular.min.js">
+      <DependentUpon>angular.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\bootstrap\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />
-    <Content Include="Scripts\bootstrap\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap\bootstrap.min.js">
+      <DependentUpon>bootstrap.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\angular\errors.json" />
-    <Content Include="Scripts\angular\angular-touch.min.js.map" />
-    <Content Include="Scripts\angular\angular-sanitize.min.js.map" />
-    <Content Include="Scripts\angular\angular-route.min.js.map" />
-    <Content Include="Scripts\angular\angular-resource.min.js.map" />
-    <Content Include="Scripts\angular\angular-loader.min.js.map" />
-    <Content Include="Scripts\angular\angular-cookies.min.js.map" />
-    <Content Include="Scripts\angular\angular-animate.min.js.map" />
-    <Content Include="Scripts\angular\angular.min.js.map" />
+    <Content Include="Scripts\angular\angular-touch.min.js.map">
+      <DependentUpon>angular-touch.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\angular\angular-sanitize.min.js.map">
+      <DependentUpon>angular-sanitize.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\angular\angular-route.min.js.map">
+      <DependentUpon>angular-route.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\angular\angular-resource.min.js.map">
+      <DependentUpon>angular-resource.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\angular\angular-loader.min.js.map">
+      <DependentUpon>angular-loader.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\angular\angular-cookies.min.js.map">
+      <DependentUpon>angular-cookies.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\angular\angular-animate.min.js.map">
+      <DependentUpon>angular-animate.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\angular\angular.min.js.map">
+      <DependentUpon>angular.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\angular\i18n\angular-locale_af-na.js" />
     <Content Include="Scripts\angular\i18n\angular-locale_af-za.js" />
     <Content Include="Scripts\angular\i18n\angular-locale_af.js" />
@@ -523,17 +568,29 @@
     <Content Include="Scripts\angular\i18n\angular-locale_zu.js" />
     <None Include="Scripts\jquery\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery\jquery-1.9.1.js" />
-    <Content Include="Scripts\jquery\jquery-1.9.1.min.js" />
-    <Content Include="Scripts\jquery\jquery-1.9.1.min.map" />
+    <Content Include="Scripts\jquery\jquery-1.9.1.min.js">
+      <DependentUpon>jquery-1.9.1.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery\jquery-1.9.1.min.map">
+      <DependentUpon>jquery-1.9.1.js</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery\jquery-ui-1.8.24.js" />
-    <Content Include="Scripts\jquery\jquery-ui-1.8.24.min.js" />
+    <Content Include="Scripts\jquery\jquery-ui-1.8.24.min.js">
+      <DependentUpon>jquery-ui-1.8.24.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\jquery\jquery.unobtrusive-ajax.js" />
-    <Content Include="Scripts\jquery\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery\jquery.unobtrusive-ajax.min.js">
+      <DependentUpon>jquery.unobtrusive-ajax.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\jquery\jquery.validate.js" />
-    <Content Include="Scripts\jquery\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery\jquery.validate.min.js">
+      <DependentUpon>jquery.validate.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\jquery\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jquery\jquery.validate.unobtrusive.min.js">
+      <DependentUpon>jquery.validate.unobtrusive.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\bootstrap\locales\bootstrap-datepicker.ar.js" />
     <Content Include="Scripts\bootstrap\locales\bootstrap-datepicker.bg.js" />
     <Content Include="Scripts\bootstrap\locales\bootstrap-datepicker.ca.js" />
@@ -580,7 +637,9 @@
     <Content Include="Scripts\bootstrap\locales\bootstrap-datepicker.zh-TW.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\toastr.js" />
-    <Content Include="Scripts\toastr.min.js" />
+    <Content Include="Scripts\toastr.min.js">
+      <DependentUpon>toastr.js</DependentUpon>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -608,7 +667,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Scripts\toastr.min.js.map" />
+    <Content Include="Scripts\toastr.min.js.map">
+      <DependentUpon>toastr.js</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

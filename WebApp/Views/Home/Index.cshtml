@@ -3,7 +3,7 @@
         <div class="container">
             <h1>Happiest Programmer!</h1>
             <p>
-                Happiest Programmer ranks the happiest (or grumpiest) programmers using sentiment analysis on
+                Happiest Programmer ranks the happiest (or grumpiest) programmers by language using sentiment analysis on
                 data from StackOverflow and GitHub.
             </p>
         </div>
@@ -21,22 +21,31 @@
                 </tr>
             </table>
         </p>
-        <div class="list-group">
-            <a href="#" class="list-group-item active">
-                <h4>Rankings</h4>
-            </a>
-            <a href="#" class="list-group-item" ng-repeat="language in languages" repeat-done="layoutDone()" rel="tooltip" title="{{language.Score}}">
-                <table class="rankings">
-                    <tr>
-                        <td class="rank">
-                            {{language.Rank}}
-                        </td>
-                        <td>
-                            {{language.Name}}
-                        </td>
-                    </tr>
-                </table>
-            </a>
+        <div class="row">
+            <div class="list-group col-md-4">
+                <a href="#" class="list-group-item active">
+                    <h4>Rankings</h4>
+                </a>
+                <a href class="list-group-item" ng-repeat="language in languages" repeat-done="layoutDone()" rel="tooltip" title="{{language.Score}}" ng-click="selectLanguage(language.Name)">
+                    <table class="rankings">
+                        <tr>
+                            <td class="rank">
+                                {{language.Rank}}
+                            </td>
+                            <td>
+                                {{language.Name}}
+                            </td>
+                        </tr>
+                    </table>
+                </a>
+            </div>
+            <div class="col-md-8">
+                <div class="well" ng-repeat="comment in positiveComments" repeat-done="layoutDone()">
+                    <p>
+                        {{comment.Text}}
+                    </p>
+                </div>
+            </div>
         </div>
         <hr />
         <footer>
