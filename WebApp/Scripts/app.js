@@ -101,6 +101,7 @@ app.controller("HomeCtrl", ["$scope", "languageFactory", "notificationFactory", 
 
     var getLanguagesSuccessCallback = function (data, status) {
         $scope.languages = data;
+        $scope.languageSelected.name = data[0].name;
     };
 
     var getPositiveCommentsSuccessCallback = function (data, status) {

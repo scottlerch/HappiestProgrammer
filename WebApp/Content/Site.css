@@ -9,3 +9,7 @@ td.rank
     text-align:left;
     font-weight:bold;
 }
+
+.selected-language {
+    background-color: #f5f5f5;
+}
