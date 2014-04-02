@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ServiceConfiguration serviceName="CloudServices" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="3" osVersion="*" schemaVersion="2013-10.2.2">
-  <Role name="DataLoader">
-    <Instances count="1" />
-    <ConfigurationSettings>
-      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=happiestprogrammer;AccountKey=jlrm0DJczVgxcaukPd4gmkO0glX65HmOsj1fhs69YbVspdftWBteAxkAbGKt0IQlRS9zFsm0xgkCIs6dbg47Ow==" />
-    </ConfigurationSettings>
-  </Role>
-  <Role name="SentimentCalculator">
+  <Role name="CombinedWorkerRole">
     <Instances count="1" />
     <ConfigurationSettings>
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=happiestprogrammer;AccountKey=jlrm0DJczVgxcaukPd4gmkO0glX65HmOsj1fhs69YbVspdftWBteAxkAbGKt0IQlRS9zFsm0xgkCIs6dbg47Ow==" />

@@ -1,14 +1,24 @@
+using System.Threading.Tasks;
 using Microsoft.WindowsAzure.ServiceRuntime;
 using System.Net;
 
-namespace HappiestProgrammer.DataLoader
+namespace HappiestProgrammer.CombinedWorkerRoles
 {
     public class WorkerRole : RoleEntryPoint
     {
         public override void Run()
         {
-            var dataLoader = new HappiestProgrammer.Core.Services.DataLoader();
-            dataLoader.Run();
+            Task.WaitAll(
+                Task.Run(() =>
+                {
+                    var dataLoader = new HappiestProgrammer.Core.Services.DataLoader();
+                    dataLoader.Run();
+                }),
+                Task.Run(() =>
+                {
+                    var sentimentCalculator = new HappiestProgrammer.Core.Services.SentimentCalculator();
+                    sentimentCalculator.Run();
+                }));
         }
 
         public override bool OnStart()

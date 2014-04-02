@@ -86,6 +86,8 @@
     <Compile Include="Models\CommentScoreLists.cs" />
     <Compile Include="SentimentAnalysis\ISentimentAnalyzer.cs" />
     <Compile Include="SentimentAnalysis\SimpleWordScoreAnalysis.cs" />
+    <Compile Include="Services\DataLoader.cs" />
+    <Compile Include="Services\SentimentCalculator.cs" />
     <Compile Include="Utilities\LinqExtensions.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

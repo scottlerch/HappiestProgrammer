@@ -37,15 +37,11 @@
     <ServiceConfiguration Include="ServiceConfiguration.Cloud.cscfg" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DataLoaderContent\" />
+    <Folder Include="CombinedWorkerRoleContent\" />
     <Folder Include="Profiles" />
-    <Folder Include="SentimentCalculatorContent\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DataLoaderContent\diagnostics.wadcfg">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="SentimentCalculatorContent\diagnostics.wadcfg">
+    <Content Include="CombinedWorkerRoleContent\diagnostics.wadcfg">
       <SubType>Content</SubType>
     </Content>
   </ItemGroup>
@@ -53,20 +49,12 @@
     <PublishProfile Include="Profiles\happiestprogrammerProduction.azurePubxml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataLoader\DataLoader.csproj">
-      <Name>DataLoader</Name>
-      <Project>{12606e31-9edf-4a1e-88e9-ddfaa4023df1}</Project>
+    <ProjectReference Include="..\CombinedWorkerRole\CombinedWorkerRole.csproj">
+      <Name>CombinedWorkerRole</Name>
+      <Project>{d2cd3519-cff6-4872-8d40-ab858cde3ad5}</Project>
       <Private>True</Private>
       <RoleType>Worker</RoleType>
-      <RoleName>DataLoader</RoleName>
-      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
-    </ProjectReference>
-    <ProjectReference Include="..\SentimentCalculator\SentimentCalculator.csproj">
-      <Name>SentimentCalculator</Name>
-      <Project>{f5aa8aaf-c5ca-48cc-826d-1af7c3461ba2}</Project>
-      <Private>True</Private>
-      <RoleType>Worker</RoleType>
-      <RoleName>SentimentCalculator</RoleName>
+      <RoleName>CombinedWorkerRole</RoleName>
       <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
     </ProjectReference>
   </ItemGroup>

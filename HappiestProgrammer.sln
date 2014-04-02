@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30110.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{9EEBF22B-7899-450D-B266-FFCD94CA51E5}"
 	ProjectSection(SolutionItems) = preProject
@@ -27,6 +27,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SentimentCalculator", "SentimentCalculator\SentimentCalculator.csproj", "{F5AA8AAF-C5CA-48CC-826D-1AF7C3461BA2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{F5287F0D-9006-4D72-AA6D-5B408336BB04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CombinedWorkerRole", "CombinedWorkerRole\CombinedWorkerRole.csproj", "{D2CD3519-CFF6-4872-8D40-AB858CDE3AD5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,6 +60,10 @@ Global
 		{F5287F0D-9006-4D72-AA6D-5B408336BB04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5287F0D-9006-4D72-AA6D-5B408336BB04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5287F0D-9006-4D72-AA6D-5B408336BB04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2CD3519-CFF6-4872-8D40-AB858CDE3AD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2CD3519-CFF6-4872-8D40-AB858CDE3AD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2CD3519-CFF6-4872-8D40-AB858CDE3AD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2CD3519-CFF6-4872-8D40-AB858CDE3AD5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
