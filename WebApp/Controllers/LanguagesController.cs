@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Web.Http;
+using WebAPI.OutputCache;
 using WebApp.Models;
 
 namespace WebApp.Controllers
@@ -14,6 +15,7 @@ namespace WebApp.Controllers
     public class LanguagesController : ApiController
     {
         // GET api/values
+        [CacheOutput(ClientTimeSpan = 86400, ServerTimeSpan = 86400)]
         public IEnumerable<Language> Get(DateTime date, int days)
         {
             var table = this.GetSentimentsTable();
@@ -23,7 +25,6 @@ namespace WebApp.Controllers
                     TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.LessThanOrEqual, date.ToString("yyyyMMdd")),
                     TableOperators.And,
                     TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.GreaterThanOrEqual, date.AddDays(-days).ToString("yyyyMMdd"))));
-
 
             var rank = 1;
             foreach (var entity in table.ExecuteQuery(query)

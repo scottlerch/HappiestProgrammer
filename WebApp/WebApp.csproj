@@ -70,6 +70,7 @@
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Services.Client" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Spatial, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Spatial.5.6.0\lib\net40\System.Spatial.dll</HintPath>
     </Reference>
@@ -145,6 +146,12 @@
     <Reference Include="System.Web.Http.OData, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebApi.OData.4.0.30506\lib\net40\System.Web.Http.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="WebAPI.OutputCache">
+      <HintPath>..\packages\Strathweb.CacheOutput.0.5\lib\net40\WebAPI.OutputCache.dll</HintPath>
+    </Reference>
+    <Reference Include="WebApi.OutputCache.Core">
+      <HintPath>..\packages\Strathweb.CacheOutput.0.5\lib\net40\WebApi.OutputCache.Core.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>

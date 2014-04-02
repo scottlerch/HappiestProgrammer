@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using WebAPI.OutputCache;
+using WebAPI.OutputCache.TimeAttributes;
 using WebApp.Models;
 using HappiestProgrammer.Core.Utilities;
 
@@ -14,6 +16,7 @@ namespace WebApp.Controllers
     public class CommentsController : ApiController
     {
         // GET api/values
+        [CacheOutput(ClientTimeSpan = 86400, ServerTimeSpan = 86400)]
         public IEnumerable<Comment> Get(DateTime date, string language, bool positive, int days)
         {
             var table = this.GetSentimentsTable();
