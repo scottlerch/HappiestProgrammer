@@ -14,7 +14,7 @@ namespace WebApp.Controllers
     public class CommentsController : ApiController
     {
         // GET api/values
-        public IEnumerable<Comment> Get(DateTime date, string language, bool positive)
+        public IEnumerable<Comment> Get(DateTime date, string language, bool positive, int days)
         {
             var table = this.GetSentimentsTable();
 
@@ -22,7 +22,7 @@ namespace WebApp.Controllers
                 TableQuery.CombineFilters(
                     TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.LessThanOrEqual, date.ToString("yyyyMMdd")),
                     TableOperators.And,
-                    TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.GreaterThanOrEqual, date.AddDays(-30).ToString("yyyyMMdd"))));
+                    TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.GreaterThanOrEqual, date.AddDays(-days).ToString("yyyyMMdd"))));
 
             foreach (var entity in table.ExecuteQuery(query)
                 .Where(c => 

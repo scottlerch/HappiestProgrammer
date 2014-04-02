@@ -14,19 +14,31 @@ namespace WebApp.Controllers
     public class LanguagesController : ApiController
     {
         // GET api/values
-        public IEnumerable<Language> Get(DateTime date)
+        public IEnumerable<Language> Get(DateTime date, int days)
         {
             var table = this.GetSentimentsTable();
 
-            var query = new TableQuery<LanguageSentimentEntity>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, date.ToString("yyyyMMdd")));
+            var query = new TableQuery<LanguageSentimentEntity>().Where(
+                TableQuery.CombineFilters(
+                    TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.LessThanOrEqual, date.ToString("yyyyMMdd")),
+                    TableOperators.And,
+                    TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.GreaterThanOrEqual, date.AddDays(-days).ToString("yyyyMMdd"))));
+
 
             var rank = 1;
-            foreach (var entity in table.ExecuteQuery(query).OrderByDescending(s => s.Score))
+            foreach (var entity in table.ExecuteQuery(query)
+                .GroupBy(s => s.Language)
+                .Select(s => new
+                {
+                    Name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(s.Key),
+                    Score = Math.Round(s.Average(e => e.Score), 2),
+                })
+                .OrderByDescending(s => s.Score))
             {
                 yield return new Language 
                 { 
-                    Name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(entity.Language), 
-                    Score = Math.Round(entity.Score, 2),
+                    Name = entity.Name, 
+                    Score = entity.Score,
                     Rank = rank++ 
                 };
             }

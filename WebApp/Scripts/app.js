@@ -12,12 +12,12 @@
 
 var app = angular.module("app", []);
 
-var languageUrlConstant = 'api/languages?date=';
-var languageUrl = languageUrlConstant.concat('2014-01-13');
+var languageUrlConstant = 'api/languages?date={0}&days={1}';
+var languageUrl = languageUrlConstant.format('2014-01-13', 1);
 
-var commentUrlConstant = 'api/comments?date={0}&language={1}&positive={2}';
-var positiveCommentsUrl = commentUrlConstant.format('2014-01-13', 'java', true);
-var negativeCommentsUrl = commentUrlConstant.format('2014-01-13', 'java', true);
+var commentUrlConstant = 'api/comments?date={0}&language={1}&positive={2}&days={3}';
+var positiveCommentsUrl = commentUrlConstant.format('2014-01-13', 'java', true, 1);
+var negativeCommentsUrl = commentUrlConstant.format('2014-01-13', 'java', true, 1);
 
 app.directive('repeatDone', function () {
     return function(scope, element, attrs) {
@@ -75,18 +75,18 @@ app.controller("HomeCtrl", ["$scope", "languageFactory", "notificationFactory", 
     var d = new Date();
     d.setDate(d.getDate() - 1);
 
-    $scope.rankSelection = { date: getDateString(d) };
-    $scope.languageSelected = { visible: true, name:"" };
+    $scope.rankSelection = { date: getDateString(d), days: 5 };
+    $scope.languageSelected = { visible: true, name: "" };
 
-    languageUrl = languageUrlConstant.concat(getDateParamter($scope.rankSelection.date));
-    positiveCommentsUrl = commentUrlConstant.format(getDateParamter($scope.rankSelection.date), $scope.languageSelected.name, true);
-    negativeCommentsUrl = commentUrlConstant.format(getDateParamter($scope.rankSelection.date), $scope.languageSelected.name, false);
+    languageUrl = languageUrlConstant.format(getDateParamter($scope.rankSelection.date), $scope.rankSelection.days);
+    positiveCommentsUrl = commentUrlConstant.format(getDateParamter($scope.rankSelection.date), $scope.languageSelected.name, true, $scope.rankSelection.days);
+    negativeCommentsUrl = commentUrlConstant.format(getDateParamter($scope.rankSelection.date), $scope.languageSelected.name, false, $scope.rankSelection.days);
 
     $scope.updateRankDate = function () {
         // HACK: since angular isn't working well with bootstrap-datepicker
         $scope.rankSelection.date = document.getElementById('rankDate').value;
 
-        languageUrl = languageUrlConstant.concat(getDateParamter($scope.rankSelection.date));
+        languageUrl = languageUrlConstant.format(getDateParamter($scope.rankSelection.date), 1);
         languageFactory.getLanguages().success(getLanguagesSuccessCallback).error(errorCallback);
     };
 
@@ -94,10 +94,10 @@ app.controller("HomeCtrl", ["$scope", "languageFactory", "notificationFactory", 
         $scope.languageSelected.visible = true;
         $scope.languageSelected.name = window.escape(language);
 
-        positiveCommentsUrl = commentUrlConstant.format(getDateParamter($scope.rankSelection.date), $scope.languageSelected.name, true);
+        positiveCommentsUrl = commentUrlConstant.format(getDateParamter($scope.rankSelection.date), $scope.languageSelected.name, true, $scope.rankSelection.days);
         languageFactory.getPositiveComments().success(getPositiveCommentsSuccessCallback).error(errorCallback);
 
-        negativeCommentsUrl = commentUrlConstant.format(getDateParamter($scope.rankSelection.date), $scope.languageSelected.name, false);
+        negativeCommentsUrl = commentUrlConstant.format(getDateParamter($scope.rankSelection.date), $scope.languageSelected.name, false, $scope.rankSelection.days);
         languageFactory.getNegativeComments().success(getNegativeCommentsSuccessCallback).error(errorCallback);
     };
 

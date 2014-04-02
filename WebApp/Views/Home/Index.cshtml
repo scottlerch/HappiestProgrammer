@@ -9,18 +9,31 @@
         </div>
     </div>
     <div class="container">
-        <p>
-            <table>
-                <tr>
-                    <td>
-                        <input type="text" data-provide="datepicker" class="form-control" ng-model="rankSelection.date" id="rankDate" />
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-default" ng-click="updateRankDate()">Update</button>
-                    </td>
-                </tr>
-            </table>
-        </p>
+        <div class="row">
+            <div class="col-md-4">
+                <table>
+                    <tr>
+                        <td>
+                            <input type="text" data-provide="datepicker" class="form-control" ng-model="rankSelection.date" id="rankDate" />
+                        </td>
+                        <td>
+                            <select class="form-control" ng-model="rankSelection.days">
+                                <option>1</option>
+                                <option>5</option>
+                                <option>15</option>
+                                <option>30</option>
+                                <option>60</option>
+                                <option>90</option>
+                            </select>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-default" ng-click="updateRankDate()">Update</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <br/>
         <div class="row">
             <div class="list-group col-md-4">
                 <a href="#" class="list-group-item active">
