@@ -75,7 +75,7 @@ app.controller("HomeCtrl", ["$scope", "languageFactory", "notificationFactory", 
     var d = new Date();
     d.setDate(d.getDate() - 1);
 
-    $scope.rankSelection = { date: getDateString(d), days: 5 };
+    $scope.rankSelection = { date: getDateString(d), days: 30 };
     $scope.languageSelected = { visible: true, name: "" };
 
     languageUrl = languageUrlConstant.format(getDateParamter($scope.rankSelection.date), $scope.rankSelection.days);
