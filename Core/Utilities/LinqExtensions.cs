@@ -1,4 +1,6 @@
-﻿namespace HappiestProgrammer.Core.Utilities
+﻿using System.Linq;
+
+namespace HappiestProgrammer.Core.Utilities
 {
     using System;
     using System.Collections.Generic;
@@ -6,6 +8,16 @@
 
     public static class LinqExtensions
     {
+        public static IEnumerable<T> OrderBy<T,V>(this IEnumerable<T> source, Func<T,V> predicate, bool descending)
+        {
+            if (descending)
+            {
+                return source.OrderByDescending(predicate);
+            }
+
+            return source.OrderBy(predicate);
+        }
+
         public static IEnumerable<IEnumerable<T>> Partition<T>(this IEnumerable<T> source, int size)
         {
             T[] array = null;

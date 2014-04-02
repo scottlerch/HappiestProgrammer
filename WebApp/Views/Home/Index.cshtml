@@ -40,10 +40,29 @@
                 </a>
             </div>
             <div class="col-md-8">
-                <div class="well" ng-repeat="comment in positiveComments" repeat-done="layoutDone()">
-                    <p>
-                        {{comment.Text}}
-                    </p>
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Positive Comments</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="well" ng-repeat="comment in positiveComments" repeat-done="layoutDone()">
+                            <p>
+                                {{comment.Text}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-danger">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Negative Comments</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="well" ng-repeat="comment in negativeComments" repeat-done="layoutDone()">
+                            <p>
+                                {{comment.Text}}
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

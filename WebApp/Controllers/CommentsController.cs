@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using WebApp.Models;
+using HappiestProgrammer.Core.Utilities;
 
 namespace WebApp.Controllers
 {
@@ -23,13 +24,12 @@ namespace WebApp.Controllers
                     TableOperators.And,
                     TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.GreaterThanOrEqual, date.AddDays(-30).ToString("yyyyMMdd"))));
 
-            //var query = new TableQuery<CommentEntity>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, date.ToString("yyyyMMdd")));
-
             foreach (var entity in table.ExecuteQuery(query)
                 .Where(c => 
                     string.Compare(c.Language, language, ignoreCase: true) == 0 && 
                     ((positive && c.Score > 0) || (!positive && c.Score < 0)))
-                .OrderByDescending(s => s.Score))
+                .OrderBy(c => c.Score, descending: positive)
+                .Take(5))
             {
                 yield return new Comment
                 {

@@ -17,6 +17,7 @@ var languageUrl = languageUrlConstant.concat('2014-01-13');
 
 var commentUrlConstant = 'api/comments?date={0}&language={1}&positive={2}';
 var positiveCommentsUrl = commentUrlConstant.format('2014-01-13', 'java', true);
+var negativeCommentsUrl = commentUrlConstant.format('2014-01-13', 'java', true);
 
 app.directive('repeatDone', function () {
     return function(scope, element, attrs) {
@@ -33,6 +34,9 @@ app.factory('languageFactory', ["$http", function ($http) {
         },
         getPositiveComments: function () {
             return $http.get(positiveCommentsUrl);
+        },
+        getNegativeComments: function () {
+            return $http.get(negativeCommentsUrl);
         },
     };
 }]);
@@ -66,6 +70,7 @@ var getDateParamter = function (d) {
 app.controller("HomeCtrl", ["$scope", "languageFactory", "notificationFactory", function ($scope, languageFactory, notificationFactory) {
     $scope.languages = [];
     $scope.positiveComments = [];
+    $scope.negativeComments = [];
 
     var d = new Date();
     d.setDate(d.getDate() - 1);
@@ -74,7 +79,8 @@ app.controller("HomeCtrl", ["$scope", "languageFactory", "notificationFactory", 
     $scope.languageSelected = { visible: true, name:"" };
 
     languageUrl = languageUrlConstant.concat(getDateParamter($scope.rankSelection.date));
-    positiveCommentsUrl = commentUrlConstant.format(getDateParamter($scope.rankSelection.date), $scope.languageSelected.name);
+    positiveCommentsUrl = commentUrlConstant.format(getDateParamter($scope.rankSelection.date), $scope.languageSelected.name, true);
+    negativeCommentsUrl = commentUrlConstant.format(getDateParamter($scope.rankSelection.date), $scope.languageSelected.name, false);
 
     $scope.updateRankDate = function () {
         // HACK: since angular isn't working well with bootstrap-datepicker
@@ -82,17 +88,17 @@ app.controller("HomeCtrl", ["$scope", "languageFactory", "notificationFactory", 
 
         languageUrl = languageUrlConstant.concat(getDateParamter($scope.rankSelection.date));
         languageFactory.getLanguages().success(getLanguagesSuccessCallback).error(errorCallback);
-
-        positiveCommentsUrl = commentUrlConstant.format(getDateParamter($scope.rankSelection.date), $scope.languageSelected.name, true);
-        languageFactory.getPositiveComments().success(getPositiveCommentsSuccessCallback).error(errorCallback);
     };
 
     $scope.selectLanguage = function (language) {
         $scope.languageSelected.visible = true;
-        $scope.languageSelected.name = language;
+        $scope.languageSelected.name = window.escape(language);
 
         positiveCommentsUrl = commentUrlConstant.format(getDateParamter($scope.rankSelection.date), $scope.languageSelected.name, true);
         languageFactory.getPositiveComments().success(getPositiveCommentsSuccessCallback).error(errorCallback);
+
+        negativeCommentsUrl = commentUrlConstant.format(getDateParamter($scope.rankSelection.date), $scope.languageSelected.name, false);
+        languageFactory.getNegativeComments().success(getNegativeCommentsSuccessCallback).error(errorCallback);
     };
 
     $scope.layoutDone = function () {
@@ -101,11 +107,17 @@ app.controller("HomeCtrl", ["$scope", "languageFactory", "notificationFactory", 
 
     var getLanguagesSuccessCallback = function (data, status) {
         $scope.languages = data;
-        $scope.languageSelected.name = data[0].name;
+        $scope.languageSelected.name = data[0].Name;
+
+        $scope.selectLanguage($scope.languageSelected.name);
     };
 
     var getPositiveCommentsSuccessCallback = function (data, status) {
         $scope.positiveComments = data;
+    };
+
+    var getNegativeCommentsSuccessCallback = function (data, status) {
+        $scope.negativeComments = data;
     };
 
     var errorCallback = function (data, status, headers, config) {
