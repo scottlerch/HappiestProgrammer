@@ -92,7 +92,7 @@ app.controller("HomeCtrl", ["$scope", "languageFactory", "notificationFactory", 
 
     $scope.selectLanguage = function (language) {
         $scope.languageSelected.visible = true;
-        $scope.languageSelected.name = window.escape(language);
+        $scope.languageSelected.name = encodeURIComponent(language);
 
         positiveCommentsUrl = commentUrlConstant.format(getDateParamter($scope.rankSelection.date), $scope.languageSelected.name, true, $scope.rankSelection.days);
         languageFactory.getPositiveComments().success(getPositiveCommentsSuccessCallback).error(errorCallback);

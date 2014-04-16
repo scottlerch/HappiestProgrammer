@@ -39,6 +39,7 @@ namespace WebApp.Controllers
                     Score = entity.Score,
                     Text = entity.Comment,
                     Date = entity.Date,
+                    Language = language,
                 };
             }
         }
