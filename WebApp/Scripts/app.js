@@ -85,6 +85,7 @@ app.controller("HomeCtrl", ["$scope", "languageFactory", "notificationFactory", 
     $scope.updateRankDate = function () {
         // HACK: since angular isn't working well with bootstrap-datepicker
         $scope.rankSelection.date = document.getElementById('rankDate').value;
+        $scope.rankSelection.days = document.getElementById('rankDays').value;
 
         languageUrl = languageUrlConstant.format(getDateParamter($scope.rankSelection.date), 1);
         languageFactory.getLanguages().success(getLanguagesSuccessCallback).error(errorCallback);
