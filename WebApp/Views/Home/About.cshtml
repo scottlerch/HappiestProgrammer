@@ -3,3 +3,13 @@
 }
 
 <h2>About</h2>
+
+<p>
+    Happiest programmer uses the <a href="https://developer.github.com/v3/" target="_blank">GitHub API</a> and 
+    <a href="http://api.stackexchange.com/" target="_blank">StackOverflow API</a> to collect commit and question/answer comments
+    into <a href="http://azure.microsoft.com/storage" target="_blank">Microsoft Azure Cloud Storage</a> on a nightly basis.  Once
+    the data is collected the text is analyzed for sentiment.  Currently, the sentiment analysis uses
+    a simple heuristic to score each word in a phrase using pre-defined word sentiment lists 
+    (<a href="/Content/AFINN-README.txt" target="_blank">AFINN</a>, <a href="/Content/subjclueslen1-README.txt" target="_blank">subjclueslen</a>).
+    Aggregated scores are dynamically calculated when requested and cached.
+</p>
