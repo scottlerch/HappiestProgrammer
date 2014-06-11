@@ -264,6 +264,10 @@
     <None Include="Properties\PublishProfiles\happiestprogrammer.pubxml">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Images\Code.png" />
+    <Content Include="Images\GitHub-Mark-32px.png" />
+    <Content Include="Images\GitHub-Mark-64px.png" />
+    <Content Include="Images\Smiley.png" />
     <Content Include="Scripts\angular\angular-animate.js" />
     <Content Include="Scripts\angular\angular-animate.min.js">
       <DependentUpon>angular-animate.js</DependentUpon>

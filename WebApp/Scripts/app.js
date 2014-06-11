@@ -87,7 +87,7 @@ app.controller("HomeCtrl", ["$scope", "languageFactory", "notificationFactory", 
         $scope.rankSelection.date = document.getElementById('rankDate').value;
         $scope.rankSelection.days = document.getElementById('rankDays').value;
 
-        languageUrl = languageUrlConstant.format(getDateParamter($scope.rankSelection.date), 1);
+        languageUrl = languageUrlConstant.format(getDateParamter($scope.rankSelection.date), $scope.rankSelection.days);
         languageFactory.getLanguages().success(getLanguagesSuccessCallback).error(errorCallback);
     };
 

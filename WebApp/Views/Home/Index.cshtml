@@ -1,26 +1,18 @@
 ﻿<div ng-controller="HomeCtrl">
     <div class="row">
         <div class="col-md-4">
-            <table>
-                <tr>
-                    <td>
-                        <input type="text" data-provide="datepicker" class="form-control" ng-model="rankSelection.date" id="rankDate" />
-                    </td>
-                    <td>
-                        <select class="form-control" ng-model="rankSelection.days" id="rankDays">
-                            <option>1</option>
-                            <option>5</option>
-                            <option>15</option>
-                            <option>30</option>
-                            <option>60</option>
-                            <option>90</option>
-                        </select>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-default" ng-click="updateRankDate()">Update</button>
-                    </td>
-                </tr>
-            </table>
+            <div class="form-group form-inline">
+                <input type="text" data-provide="datepicker" class="form-control date-selection" ng-model="rankSelection.date" id="rankDate" />
+                <select class="form-control date-range-selection" ng-model="rankSelection.days" id="rankDays">
+                    <option>1</option>
+                    <option>5</option>
+                    <option>15</option>
+                    <option>30</option>
+                    <option>60</option>
+                    <option>90</option>
+                </select>
+                <button type="button" class="btn btn-default" ng-click="updateRankDate()">Update</button>
+            </div>
         </div>
     </div>
     <br />

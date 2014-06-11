@@ -3,51 +3,52 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" href="favicon.ico">
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <meta name="description" content="Ranks the happiest or grumpiest programmers by language" />
 </head>
-    <body ng-app="app">
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    @Html.ActionLink("Rankings", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, null)</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="jumbotron">
-            <div class="container">
-                <h1>Happiest Programmer!</h1>
-                <p>
-                    Happiest Programmer ranks the happiest (or grumpiest) programmers by programming language
-                    using sentiment analysis on data from StackOverflow and GitHub.
-                </p>
-            </div>
-        </div>
+<body ng-app="app">
+    <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; Scott Lerch @DateTime.Now.Year</p>
-            </footer>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Rankings", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, null)</li>
+                </ul>
+            </div>
         </div>
+    </div>
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Happiest <img src="/Images/Smiley.png" width="64" height="64" alt="Smiley Face" /> Programmer <img src="/Images/Code.png" width="64" height="64" alt="Code" /></h1>
+            <p>
+                Happiest Programmer ranks the happiest (or grumpiest) programmers by programming language
+                using sentiment analysis on data from StackOverflow and GitHub.
+            </p>
+        </div>
+    </div>
+    <div class="container">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; Scott Lerch @DateTime.Now.Year</p>
+        </footer>
+    </div>
 
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        @Scripts.Render("~/bundles/bootstrap-datepicker")
-        @Scripts.Render("~/bundles/angular")
-        @Scripts.Render("~/bundles/toastr")
-        @Scripts.Render("~/bundles/app")
-        @RenderSection("scripts", required: false)
-    </body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/bootstrap-datepicker")
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/toastr")
+    @Scripts.Render("~/bundles/app")
+    @RenderSection("scripts", required: false)
+</body>
 </html>

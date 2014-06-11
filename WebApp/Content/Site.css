@@ -13,3 +13,11 @@ td.rank
 .selected-language {
     background-color: #f5f5f5;
 }
+
+.date-selection {
+    width: 120px;
+}
+
+.date-range-selection {
+    width: 120px;
+}
