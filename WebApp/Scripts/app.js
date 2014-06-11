@@ -67,7 +67,7 @@ var getDateParamter = function (d) {
     return dateParts[2].concat('-', dateParts[0], '-', dateParts[1]);
 };
 
-app.controller("HomeCtrl", ["$scope", "languageFactory", "notificationFactory", function ($scope, languageFactory, notificationFactory) {
+app.controller("HomeCtrl", ["$scope", "$sce", "languageFactory", "notificationFactory", function ($scope, $sce, languageFactory, notificationFactory) {
     $scope.languages = [];
     $scope.positiveComments = [];
     $scope.negativeComments = [];
@@ -126,6 +126,10 @@ app.controller("HomeCtrl", ["$scope", "languageFactory", "notificationFactory", 
     };
 
     languageFactory.getLanguages().success(getLanguagesSuccessCallback).error(errorCallback);
+
+    $scope.to_trusted = function (html_code) {
+        return $sce.trustAsHtml(html_code);
+    }
 }]);
 
 

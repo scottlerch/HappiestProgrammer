@@ -1,38 +1,45 @@
 ﻿<div ng-controller="HomeCtrl">
     <div class="row">
-        <div class="col-md-4">
-            <div class="form-group form-inline">
-                <input type="text" data-provide="datepicker" class="form-control date-selection" ng-model="rankSelection.date" id="rankDate" />
-                <select class="form-control date-range-selection" ng-model="rankSelection.days" id="rankDays">
-                    <option>1</option>
-                    <option>5</option>
-                    <option>15</option>
-                    <option>30</option>
-                    <option>60</option>
-                    <option>90</option>
-                </select>
-                <button type="button" class="btn btn-default" ng-click="updateRankDate()">Update</button>
+        <div class=" col-md-4">
+            <div class="well">
+                <div class="form-group">
+                    <div class="form-group">
+                        <label class="control-label" for="rankDate">As-of-Date</label>
+                        <input type="text" data-provide="datepicker" class="form-control" ng-model="rankSelection.date" id="rankDate" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="rankDays">Days Rollup</label>
+                        <select class="form-control" ng-model="rankSelection.days" id="rankDays">
+                            <option>1</option>
+                            <option>5</option>
+                            <option>15</option>
+                            <option>30</option>
+                            <option>60</option>
+                            <option>90</option>
+                        </select>
+                    </div>
+                    <div class="form-group form-inline">
+                        <button type="button" class="btn btn-default" ng-click="updateRankDate()">Update</button>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    <br />
-    <div class="row">
-        <div class="list-group col-md-4">
-            <a href="#" class="list-group-item active">
-                <h4>Rankings</h4>
-            </a>
-            <a href class="list-group-item" ng-repeat="language in languages" repeat-done="layoutDone()" rel="tooltip" title="{{language.Score}}" ng-click="selectLanguage(language.Name)" ng-class="{ 'selected-language': language.Name.toUpperCase() === languageSelected.name.toUpperCase() }">
-                <table class="rankings">
-                    <tr>
-                        <td class="rank">
-                            {{language.Rank}}
-                        </td>
-                        <td>
-                            {{language.Name}}
-                        </td>
-                    </tr>
-                </table>
-            </a>
+            <div class="list-group">
+                <a href="#" class="list-group-item active">
+                    <h4>Rankings</h4>
+                </a>
+                <a href class="list-group-item" ng-repeat="language in languages" repeat-done="layoutDone()" rel="tooltip" title="{{language.Score}}" ng-click="selectLanguage(language.Name)" ng-class="{ 'selected-language': language.Name.toUpperCase() === languageSelected.name.toUpperCase() }">
+                    <table class="rankings">
+                        <tr>
+                            <td class="rank">
+                                {{language.Rank}}
+                            </td>
+                            <td>
+                                {{language.Name}}
+                            </td>
+                        </tr>
+                    </table>
+                </a>
+            </div>
         </div>
         <div class="col-md-8">
             <div class="panel panel-success">
@@ -41,7 +48,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="well" ng-repeat="comment in positiveComments" repeat-done="layoutDone()">
-                        <p>
+                        <p ng-bind-html="to_trusted(comment.Text)">
                             {{comment.Text}}
                         </p>
                     </div>
@@ -53,7 +60,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="well" ng-repeat="comment in negativeComments" repeat-done="layoutDone()">
-                        <p>
+                        <p ng-bind-html="to_trusted(comment.Text)">
                             {{comment.Text}}
                         </p>
                     </div>
