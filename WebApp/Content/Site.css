@@ -13,3 +13,11 @@ td.rank
 .selected-language {
     background-color: #f5f5f5;
 }
+
+.jumbotron {
+    margin-top: 15px;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
