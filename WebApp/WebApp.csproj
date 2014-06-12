@@ -725,7 +725,6 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <PropertyGroup>
     <PostBuildEvent>copy "$(TargetDir)PrivateAppSettings.config" "$(ProjectDir)"</PostBuildEvent>
   </PropertyGroup>
