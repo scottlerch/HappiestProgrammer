@@ -261,6 +261,7 @@
     <Content Include="Content\toastr.css.map">
       <DependentUpon>toastr.css</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\happiestprogrammer %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\happiestprogrammer.pubxml">
       <SubType>Designer</SubType>
     </None>
